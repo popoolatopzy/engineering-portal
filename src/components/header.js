@@ -3,10 +3,6 @@ import { Link } from "gatsby"
 
 import headerStyles from "./header.module.scss"
 
-import logoAsync from "../../static/async.svg"
-import logoAsyncDark from "../../static/async-dark.svg"
-import logoSwi from "../../static/swi.svg"
-import logoFuel from "../../static/fuel.svg"
 import LogoLr from "../../static/logo-blog.svg"
 import Search from "./search"
 import ReactGA from "react-ga"
@@ -191,6 +187,20 @@ const Header = ({ menuLinks, searchIndex }) => {
           /> */}
         </Link>
         <Search searchIndex={searchIndex} />
+      </div>
+      <div className={headerStyles.navigation}>
+        <ul>
+          <li className={headerStyles.active}>
+            <Link to={"/async"}>Engineering</Link>
+          </li>
+          <li>
+            <Link to={"/swi"}>Identity</Link>
+          </li>
+          <li>
+            <Link to={"/fuel"}> Growth</Link>
+          </li>
+          <hr />
+        </ul>
       </div>
       <div
         className={headerStyles.backdrop}

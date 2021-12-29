@@ -34,117 +34,19 @@ const BlogList = props => {
         }
       />
       <main>
-        {
-          <Tabs className={styles.blogTabs}>
-            <div className={styles.containerTabs}>
-              <TabList>
-                <Tab>
-                  <Link to="/async">Engineering</Link>
-                </Tab>
-                <Tab>
-                  <Link to="/fuel">Identity</Link>
-                </Tab>
-                <Tab>
-                  <Link to="/swi">Growth</Link>
-                </Tab>
-                <Tab>Culture</Tab>
-                <Tab>Announcements</Tab>
-                {/* <hr /> */}
-              </TabList>
-            </div>
-            {openMenu && (
-              <div className={styles.containerTabsMobile}>
-                <TabList>
-                  <Tab>
-                    <Link to="/async">Engineering</Link>
-                  </Tab>
-                  <Tab>
-                    <Link to="/fuel">Identity</Link>
-                  </Tab>
-                  <Tab>
-                    <Link to="/swi">Growth</Link>
-                  </Tab>
-                  <Tab>Culture</Tab>
-                  <Tab>Announcements</Tab>
-                </TabList>
-              </div>
-            )}
-            {!openMenu ? (
-              <div>
-                <img
-                  src={Hamburger}
-                  alt={`logo`}
-                  className={styles.Hamburger}
-                  onClick={() => {
-                    setOpenMenu(!openMenu)
-                  }}
-                />
-              </div>
-            ) : (
-              <div className={styles.closeMenu}>
-                <img
-                  src={iconClose}
-                  alt={`logo`}
-                  onClick={() => {
-                    setOpenMenu(!openMenu)
-                  }}
-                />
-              </div>
-            )}
-            <div className={layoutStyles.pinnedwrap}>
-              <div className={layoutStyles.blogContentPinned}>
-                {<PinnedCard />}
-              </div>
-            </div>
-
-            <TabPanel>
-              <CardList
-                posts={data.allMarkdownRemark.edges}
-                total={total}
-                currentPage={currentPage}
-              />
-              <Pagination
-                pages={numPages}
-                currentPage={parseInt(currentPage)}
-                type={data.allMarkdownRemark.edges[0].node.frontmatter.type}
-              />
-            </TabPanel>
-
-            <TabPanel>
-              <CardList
-                posts={data.allMarkdownRemark.edges}
-                total={total}
-                currentPage={currentPage}
-              />
-              <Pagination
-                pages={numPages}
-                currentPage={parseInt(currentPage)}
-                type={data.allMarkdownRemark.edges[0].node.frontmatter.type}
-              />
-            </TabPanel>
-
-            <TabPanel>
-              <CardList
-                posts={data.allMarkdownRemark.edges}
-                total={total}
-                currentPage={currentPage}
-              />
-              <Pagination
-                pages={numPages}
-                currentPage={parseInt(currentPage)}
-                type={data.allMarkdownRemark.edges[0].node.frontmatter.type}
-              />
-            </TabPanel>
-
-            <TabPanel>
-              <h2>Any content 4</h2>
-            </TabPanel>
-
-            <TabPanel>
-              <h2>Any content 5</h2>
-            </TabPanel>
-          </Tabs>
-        }
+        <div className={layoutStyles.pinnedwrap}>
+          <div className={layoutStyles.blogContentPinned}>{<PinnedCard />}</div>
+        </div>
+        <CardList
+          posts={data.allMarkdownRemark.edges}
+          total={total}
+          currentPage={currentPage}
+        />
+        <Pagination
+          pages={numPages}
+          currentPage={parseInt(currentPage)}
+          type={data.allMarkdownRemark.edges[0].node.frontmatter.type}
+        />
       </main>
     </Layout>
   )

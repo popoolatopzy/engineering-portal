@@ -10,7 +10,15 @@ export default function CardList({ posts, currentPage }) {
       <div className={styles.cardlist}>
         <div className="grid-67-33">
           <div className="grid-50">
-            {posts && posts.map(({ node }) => <Card node={node} />)}
+            {posts &&
+              posts.map(({ node }, index) => {
+                if (
+                  (currentPage - 1) * limit <= index &&
+                  index < (currentPage - 1) * limit + limit
+                ) {
+                  return <Card node={node} />
+                }
+              })}
           </div>
           <div className={`${styles.landing} ${styles.sidebar}`}>
             <div>
